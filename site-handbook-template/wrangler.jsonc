@@ -1,0 +1,7 @@
+// Default config: static assets only. Protection comes from Cloudflare Access
+// (recommended — see README). For the shared-password alternative, see /worker-password.
+{
+  "name": "site-handbook",
+  "compatibility_date": "2026-07-01",
+  "assets": { "directory": "./public" }
+}

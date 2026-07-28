@@ -1,0 +1,9 @@
+// Wrangler config for the WORKER-PASSWORD protection pattern.
+// To use: copy this file and worker.js to the template root (replacing the root
+// wrangler.jsonc), then: npx wrangler secret put HANDBOOK_PASSWORD && npx wrangler deploy
+{
+  "name": "site-handbook",
+  "main": "worker.js",
+  "compatibility_date": "2026-07-01",
+  "assets": { "directory": "./public", "binding": "ASSETS" }
+}
