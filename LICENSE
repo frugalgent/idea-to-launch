@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 FG
+Copyright (c) 2026 Kevin Christensen / FG Labs
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11,6 +11,12 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
+NOTE ON SCOPE: This license covers the files in this repository (the Context
+File Pack, the Site Handbook template, and associated documentation). It does
+NOT cover the text, chapters, or cover art of the book "Idea to Launch:
+Building a Website with Claude for (Almost) Free," which are not distributed
+in this repository and remain all rights reserved.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
