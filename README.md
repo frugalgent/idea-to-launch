@@ -1,6 +1,6 @@
 # Idea to Launch — Companion Repo
 
-**The living companion to *Idea to Launch: Building a Website with Claude for (Almost) Free* — Book One of The Website Builder Handbooks, by Kevin Christensen.**
+**The living companion to *Idea to Launch: Building a Website with Claude for (Almost) Free* — Book One of The Builders Handbook, by Kevin Christensen.**
 
 You've found the toolbox. The book is the workshop.
 
@@ -106,7 +106,7 @@ Full legal text: [`LICENSE`](./LICENSE).
 
 ## About
 
-*Idea to Launch* is Book One of **The Website Builder Handbooks** — a series about building real things on the modern web for almost nothing, with Claude Code as your co-builder. Book Two (databases — for the day you actually need one) is trailed in Chapter 15.
+*Idea to Launch* is Book One of **The Builders Handbook** — a series about building real things for almost nothing, with Claude Code as your co-builder. Book Two (databases — for the day you actually need one) is trailed in Chapter 15.
 
 Written by **Kevin Christensen**. Published by **[FG Labs](https://fglabs.co)**.
 
