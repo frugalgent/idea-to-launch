@@ -67,6 +67,30 @@ mermaid.initialize({startOnLoad:false, theme:'neutral'});
 const nav = document.getElementById('nav'), out = document.getElementById('out');
 nav.innerHTML = PAGES.map(([id,t])=>`<a href="#${id}" data-p="${id}">${t}</a>`).join('');
 
+
+function onboard(){
+  const isFile = location.protocol === 'file:';
+  const head = isFile
+    ? 'One small step first \u2014 this page needs a tiny server'
+    : 'The pages didn\u2019t load \u2014 likely the wrong folder';
+  const why = isFile
+    ? 'You opened this file directly (totally reasonable!), but browsers won\u2019t let a local file load its content pages. The fix is one command.'
+    : 'The server is running, but it can\u2019t find the <code>content/</code> folder. You\u2019re probably serving from the wrong directory.';
+  return `
+  <h1>${head}</h1>
+  <p>${why}</p>
+  <h2>Do this</h2>
+  <ol>
+    <li>Open your terminal and go <strong>into the template folder</strong> \u2014 the one containing <code>wrangler.jsonc</code>:<br>
+        <code>cd path/to/site-handbook-template</code><br>
+        <span style="color:#4A5C6E">Check with <code>ls</code> \u2014 you should see <code>wrangler.jsonc</code>, <code>public</code>, <code>README.md</code>.</span></li>
+    <li>Run: <code>npx wrangler dev</code><br>
+        <span style="color:#4A5C6E">First run may ask to install wrangler \u2014 answer <strong>y</strong>. That\u2019s normal.</span></li>
+    <li>When it says <code>Ready on http://localhost:8787</code>, open that address in your browser. That\u2019s this handbook, working.</li>
+  </ol>
+  <p>Full walkthrough and troubleshooting table: the <code>README.md</code> sitting next to this file.</p>`;
+}
+
 async function load(){
   let id = (location.hash||'#overview').slice(1);
   if(!PAGES.some(p=>p[0]===id)) id='overview';
@@ -83,7 +107,7 @@ async function load(){
       const div = document.createElement('div'); div.className='mermaid'; div.innerHTML = svg;
       pre.replaceWith(div);
     }
-  }catch(e){ out.innerHTML = '<p>Could not load page. Are you serving over http? (See README — <code>file://</code> won\'t work.)</p>'; }
+  }catch(e){ out.innerHTML = onboard(); }
   window.scrollTo(0,0);
   document.getElementById('side').classList.remove('open');
 }

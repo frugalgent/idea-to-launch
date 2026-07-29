@@ -31,16 +31,74 @@ them (with Mermaid diagrams) in the browser via CDN libraries. Content is plain
 diagrams from a prompt. Push = deploy, same as your main site.
 
 ## Quick start
-1. Copy this folder into your site's repo (or a sibling repo — the book leans
-   same-repo for solo builders; a sibling is cleaner for client handoff).
-2. Find-and-replace the `[bracketed placeholders]` across `public/content/` —
-   or better, open Claude Code and say: *"Fill in the Site Handbook pages from
-   this project's CLAUDE.md, context files, and wrangler config. Leave anything
-   you can't verify in brackets."*
-3. Preview locally: `npx wrangler dev` (or `python3 -m http.server` inside
-   `/public`). Note: opening `index.html` directly as a file won't work — the
-   pages load over http.
-4. Deploy: `npx wrangler deploy` — then **protect it before sharing the URL.**
+
+**What you need:** the toolkit from Chapter 2 of the book — Node, and a terminal
+you’re on speaking terms with. (If you built the book’s site, you have everything.
+If you arrived here cold: install Node from nodejs.org first.)
+
+**One warning before anything:** don’t double-click `index.html`. It will open,
+shrug, and explain why — browsers won’t let a local file load its content pages.
+The template needs a tiny local server, which is one command. Here it is.
+
+### See it working (2 minutes)
+
+1. Unzip, then go **into** the template folder in your terminal:
+   ```
+   cd path/to/site-handbook-template
+   ls
+   ```
+   **You should see:** `wrangler.jsonc`, `public`, `worker-password`, `README.md`.
+   If you don’t, you’re in the wrong folder — `cd` deeper or back out. Every
+   command below assumes you’re standing right here.
+
+2. Start the local preview:
+   ```
+   npx wrangler dev
+   ```
+   First run asks *“Need to install wrangler? (y/n)”* — answer **y**. A telemetry
+   notice appears; that’s Cloudflare’s, not ours.
+   **You should see:** `Ready on http://localhost:8787`
+
+3. Open **http://localhost:8787** in your browser. That’s the handbook — seven
+   pages, diagrams rendering, sidebar working. Click around. `Ctrl+C` in the
+   terminal stops it whenever you’re done.
+
+### Make it yours
+
+4. Now — and only now that you’ve seen it work — fill it in. The pages in
+   `public/content/` are plain Markdown full of `[bracketed placeholders]`.
+   Edit by hand, or open Claude Code in your *site’s* project and say:
+   > “Here’s my Site Handbook template folder. Fill in the pages from this
+   > project’s CLAUDE.md, context files, and wrangler config. Leave anything
+   > you can’t verify in brackets.”
+   Re-run step 2–3 to see your changes.
+
+### Put it online
+
+5. Log in to Cloudflare from the terminal (one-time; opens your browser):
+   ```
+   npx wrangler login
+   ```
+6. Deploy:
+   ```
+   npx wrangler deploy
+   ```
+   **You should see:** an upload summary ending in a `*.workers.dev` URL.
+   That URL is live — which is exactly why the next section is not optional.
+
+7. **Protect it before sharing the URL** — pick a pattern below.
+
+### If something goes wrong
+
+| You see | What it means | The fix |
+|---|---|---|
+| A page saying it needs a tiny server | You double-clicked `index.html` | Follow steps 1–3 above |
+| `command not found: npx` (or `node`) | Node isn’t installed / not on PATH | Install from nodejs.org, reopen the terminal |
+| Wrangler can’t find a config / “Missing entry-point” | You’re in the wrong directory | `cd` to the folder where `ls` shows `wrangler.jsonc` |
+| Pages load but content says “wrong folder” | Serving from somewhere other than the template root | Stop the server, redo step 1–2 |
+| Deploy fails mentioning auth / login / account | You skipped `npx wrangler login` | Run step 5, then deploy again |
+| `address already in use` on dev | Another preview is still running | `Ctrl+C` the old one, or `npx wrangler dev --port 8788` |
+| Something else | — | Paste the **exact** error into Claude Code: *“Diagnose before proposing fixes.”* (Book Ch. 11 reflex) |
 
 ## Protecting it — two patterns
 
