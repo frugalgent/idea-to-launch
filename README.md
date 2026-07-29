@@ -59,6 +59,7 @@ If it isn't written down, it isn't maintained. This template is where you write 
 ```
 /pack                     the Context File Pack — examples + templates
 /site-handbook-template   deploy-ready docs site with Mermaid starters
+toolkit-install.md        every install command, every CLI prompt, dated
 errata.md                 corrections to the printed/ebook text
 CHANGELOG.md              what changed, when, and which book edition it affects
 LICENSE                   MIT — see "License" below
